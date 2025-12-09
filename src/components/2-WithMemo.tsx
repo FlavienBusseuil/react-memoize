@@ -3,11 +3,17 @@
 import { fibonacci } from "@/utils/fibonacci";
 import { memo, useState } from "react";
 
-const ChildComponent = memo(function ChildComponent() {
-	console.log("render");
+const ChildComponent = memo(
+	function ChildComponent() {
+		const start = Date.now();
+		const fiboResult = fibonacci(36);
+		const renderTime = Date.now() - start;
+		console.log(`Child render time: ${renderTime}ms`);
 
-	return <>{fibonacci(36)}</>;
-});
+		return <>{fiboResult}</>;
+	}
+	// (prevProps, nextProps) => false
+);
 
 export function WithMemo() {
 	const [isActive, setIsActive] = useState(true);

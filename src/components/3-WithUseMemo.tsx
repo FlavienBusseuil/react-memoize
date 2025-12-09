@@ -9,7 +9,7 @@ export function WithUseMemo() {
 
 	const start = Date.now();
 	const fiboResult = useMemo(() => fibonacci(fiboInput), [fiboInput]);
-	console.log(Date.now() - start);
+	const renderTime = Date.now() - start;
 
 	return (
 		<>
@@ -21,12 +21,13 @@ export function WithUseMemo() {
 			/>
 			<div
 				onClick={() => setIsRed(!isRed)}
-				className={`rounded-xl p-4 text-white ${
+				className={`rounded-xl p-4 text-white select-none ${
 					isRed ? "bg-red-400" : "bg-slate-400"
 				}`}
 			>
 				{fiboResult}
 			</div>
+			<div className="bg-gray-500">Render time: {renderTime}ms</div>
 		</>
 	);
 }

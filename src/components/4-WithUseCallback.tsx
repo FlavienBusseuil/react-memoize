@@ -23,13 +23,13 @@ const ChildComponent = memo(function ChildComponent({
 
 export function WithUseCallback() {
 	const [isActive, setIsActive] = useState(true);
-	const handleClick = () => console.log("click !");
-	// const handleClick = useCallback(() => console.log("click !"), []);
+	// const handleClick = () => console.log("click !");
+	const handleClick = useCallback(() => console.log("click !"), []);
 
 	return (
 		<>
 			<div
-				className={`rounded-xl p-4 text-white cursor-pointer ${
+				className={`rounded-xl p-4 text-white cursor-pointer select-none ${
 					isActive ? "bg-red-400" : "bg-blue-400"
 				}`}
 				onClick={() => setIsActive(!isActive)}
